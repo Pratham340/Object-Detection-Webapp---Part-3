@@ -1,0 +1,51 @@
+<html>
+<head>
+
+    <title>Object Detection</title>
+  <link rel="icon" href="https://jynyhy9vu5r8xz5zy0utww-on.drv.tw/Case_Study_Project_WM/case.png" type="image/icon type">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="arduino_nano.css">
+    <!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+	var _smartsupp = _smartsupp || {};
+	_smartsupp.key = '42531907fb33425900d8402a508b2235ef2177cf';
+	window.smartsupp||(function(d) {
+	  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+	  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+	  c.type='text/javascript';c.charset='utf-8';c.async=true;
+	  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+	})(document);
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+</head>
+
+<body background="data:image/png;base64,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">
+  <center>
+    <h1 class="btn btn-info heading">Object Detection- Arduino Nano
+    </h1>
+    <button id="logout" class="glyphicon glyphicon-home btn btn-success" onclick="home()"> Home</button>
+    <h3 class="btn btn-danger" id="status">Status:</h3>
+    <div class="copy_right_footer">
+        Developed by - Pratham Pujari
+  </div>
+      <div class="loader-wrapper">
+              <span class="loader"><span class="loader-inner"></span></span>
+            </div>
+  </center>
+  <script>
+    $(window).on("load",function(){
+      $(".loader-wrapper").fadeOut("slow");
+    });
+    </script>
+  <script src="arduino_nano.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+
+.heading
+{
+font-size: 23px;
+width: 100%;
+margin: 0px;
+font-family:'Monoton', cursive;
+}
+
+#status
+{
+font-size: 18px;
+}
+canvas{
+    box-shadow: 5px 5px 5px black;
+    border-radius: 20px;
+	border:10px dashed red;
+	animation-name:example;
+			animation-duration: 3s;
+			animation-iteration-count: infinite;
+}
+.loader-wrapper{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: lightblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+	.loader{
+		display:inline-block;
+		width: 30px;
+		height: 30px;
+		position: relative;
+		border:4px solid #Fff;
+		animation: loader 2s infinite ease;
+	}
+	.loader-inner {
+		vertical-align: top;
+		display: inline-block;
+		width: 100%;
+		background-color: blue;
+		animation: loader-inner 2s infinite ease-in;
+	  }
+	
+	@keyframes loader {
+		0% { transform: rotate(0deg);}
+		25% { transform: rotate(180deg);}
+		50% { transform: rotate(180deg);}
+		75% { transform: rotate(360deg);}
+		100% { transform: rotate(360deg);}
+	  }
+	  
+	  @keyframes loader-inner {
+		0% { height: 0%;}
+		25% { height: 0%;}
+		50% { height: 100%;}
+		75% { height: 100%;}
+		100% { height: 0%;}
+      }
+      .buttons{
+          width: 20%;
+		  border-radius: 50%;
+		  animation-name:example;
+			animation-duration: 3s;
+			animation-iteration-count: infinite;
+      }
+      .copy_right_footer {
+        position: fixed;
+        color: #6c757d;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        line-height: 3;
+        text-align: center;
+		font-family:'Monoton', cursive;
+     
+	 }
+	 .btn-warning:hover {
+		background-color: red;
+		animation-name:example;
+			animation-duration: 3s;
+			animation-iteration-count: infinite;
+		}
+		
+		@keyframes example{
+			from{box-shadow:1px 1px 40px red;}
+			to{box-shadow:1px 1px 40px blue;}
+		}
+#logout
+{
+	margin-top:10px;
+	margin-right:10px;
+	font-size: 20px; float: right;
+}
+.color_white
+{
+	color: white
+}
+#user_name{
+	margin-left:100px;
+	font-family:'Monoton', cursive;
+}

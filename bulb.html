@@ -1,0 +1,52 @@
+<html>
+<head>
+
+    <title>Object Detection</title>
+    
+  <link rel="icon" href="https://jynyhy9vu5r8xz5zy0utww-on.drv.tw/Case_Study_Project_WM/case.png" type="image/icon type">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="bulb.css">
+  <!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+	var _smartsupp = _smartsupp || {};
+	_smartsupp.key = '42531907fb33425900d8402a508b2235ef2177cf';
+	window.smartsupp||(function(d) {
+	  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+	  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+	  c.type='text/javascript';c.charset='utf-8';c.async=true;
+	  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+	})(document);
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+</head>
+
+<body background="data:image/jpeg;base64,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">
+  <center>
+    <h1 class="btn btn-info heading">Object Detection- Bulb
+    </h1>
+    <button id="logout" class="glyphicon glyphicon-home btn btn-success" onclick="home()"> Home</button>
+    <h3 class="btn btn-danger" id="status">Status:</h3>
+    <div class="copy_right_footer">
+        Developed by - Pratham Pujari
+  </div>
+      <div class="loader-wrapper">
+              <span class="loader"><span class="loader-inner"></span></span>
+            </div>
+  </center>
+  <script>
+    $(window).on("load",function(){
+      $(".loader-wrapper").fadeOut("slow");
+    });
+    </script>
+  <script src="bulb.js"></script>
+
+</body>
+</html>
